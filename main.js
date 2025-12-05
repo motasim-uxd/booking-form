@@ -16,6 +16,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "Saving...";
 
+  // Prepare form data as application/x-www-form-urlencoded
   const formData = new URLSearchParams();
   formData.append("name", document.getElementById("name").value);
   formData.append("phone", document.getElementById("phone").value);
@@ -26,22 +27,21 @@ form.addEventListener("submit", async (e) => {
     const res = await fetch(API_URL, {
       method: "POST",
       body: formData
-      // Note: do NOT set Content-Type; fetch will handle it
+      // Do NOT set Content-Type: browser sets it automatically
     });
 
     const json = await res.json();
 
     if (json.success) {
-     msg.style.color = "green";
-     msg.textContent = "Saved successfully!";
-     form.reset();
-   } else {
-     msg.style.color = "red";
-     // Convert error object to string
-     const errorMsg = json.error ? JSON.stringify(json.error) : "Error saving data";
-     msg.textContent = errorMsg;
-   }
-
+      msg.style.color = "green";
+      msg.textContent = "Saved successfully!";
+      form.reset();
+    } else {
+      msg.style.color = "red";
+      // Safely convert error object to string
+      const errorMsg = json.error ? JSON.stringify(json.error) : "Error saving data";
+      msg.textContent = errorMsg;
+    }
   } catch (err) {
     msg.style.color = "red";
     msg.textContent = "Error: " + err.message;
@@ -50,8 +50,6 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = false;
   submitBtn.textContent = "Save";
 });
-
-
 
 
 });
@@ -152,6 +150,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
 
