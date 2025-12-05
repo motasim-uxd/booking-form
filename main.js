@@ -6,7 +6,7 @@ const form = document.getElementById("booking-form");
 const msg = document.getElementById("statusMsg");
 const submitBtn = document.getElementById("submitBtn");
 
-const API_URL = "https://script.google.com/macros/s/AKfycbwujnkcpR_OhHPR6camAEbb91MczxiaRdAtdPCPkEjO3CprKhGLYVyNk_7SODHe8uXj/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbypZzfO3fDKyc8eCJRs-xzNRiFeicb3JFzk6LfXuCe4X0dMvh5Eh8Rfyl5YIQdMXz15/exec";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -147,5 +147,6 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
