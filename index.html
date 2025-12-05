@@ -1,4 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Form</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 500px; }
+    label { display: block; margin-top: 10px; }
+    input, textarea { width: 100%; padding: 5px; margin-top: 5px; }
+    button { margin-top: 15px; padding: 10px 20px; }
+    #statusMsg { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
 <h1>Booking Form</h1>
+<p>Fill details and attach notes.</p>
+
 <form id="booking-form">
   <label>Name</label>
   <input type="text" name="name" id="name" required>
@@ -18,3 +35,5 @@
 <p id="statusMsg"></p>
 
 <script src="main.js" defer></script>
+</body>
+</html>
