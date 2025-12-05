@@ -7,17 +7,15 @@ const form = document.getElementById("booking-form");
 const msg = document.getElementById("statusMsg");
 const submitBtn = document.getElementById("submitBtn");
 
-// Replace this with your Apps Script /exec URL
-const API_URL = "https://script.google.com/macros/s/AKfycbypZzfO3fDKyc8eCJRs-xzNRiFeicb3JFzk6LfXuCe4X0dMvh5Eh8Rfyl5YIQdMXz15/exec";
+// Replace with your Apps Script Web App URL
+const API_URL = "https://script.google.com/macros/s/YOUR_EXEC_ID/exec";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Disable button while saving
   submitBtn.disabled = true;
   submitBtn.textContent = "Saving...";
 
-  // Prepare data as application/x-www-form-urlencoded
   const formData = new URLSearchParams();
   formData.append("name", document.getElementById("name").value);
   formData.append("phone", document.getElementById("phone").value);
@@ -28,7 +26,7 @@ form.addEventListener("submit", async (e) => {
     const res = await fetch(API_URL, {
       method: "POST",
       body: formData
-      // No need for headers: Content-Type is automatically set
+      // Note: do NOT set Content-Type; fetch will handle it
     });
 
     const json = await res.json();
@@ -46,10 +44,10 @@ form.addEventListener("submit", async (e) => {
     msg.textContent = "Error: " + err.message;
   }
 
-  // Re-enable button
   submitBtn.disabled = false;
   submitBtn.textContent = "Save";
 });
+
 
 
 
@@ -151,6 +149,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
 
