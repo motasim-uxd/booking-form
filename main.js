@@ -7,47 +7,50 @@ const form = document.getElementById("booking-form");
 const msg = document.getElementById("statusMsg");
 const submitBtn = document.getElementById("submitBtn");
 
-const API_URL = "https://script.google.com/macros/s/AKfycbypZzfO3fDKyc8eCJRs-xzNRiFeicb3JFzk6LfXuCe4X0dMvh5Eh8Rfyl5YIQdMXz15/exec";
+// Replace this with your Apps Script /exec URL
+const API_URL = "https://script.google.com/macros/s/YOUR_EXEC_ID/exec";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const data = {
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    email: document.getElementById("email").value,
-    notes: document.getElementById("notes").value
-  };
-
+  // Disable button while saving
   submitBtn.disabled = true;
   submitBtn.textContent = "Saving...";
+
+  // Prepare data as application/x-www-form-urlencoded
+  const formData = new URLSearchParams();
+  formData.append("name", document.getElementById("name").value);
+  formData.append("phone", document.getElementById("phone").value);
+  formData.append("email", document.getElementById("email").value);
+  formData.append("notes", document.getElementById("notes").value);
 
   try {
     const res = await fetch(API_URL, {
       method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+      body: formData
+      // No need for headers: Content-Type is automatically set
     });
 
     const json = await res.json();
 
     if (json.success) {
       msg.style.color = "green";
-      msg.textContent = "Saved!";
+      msg.textContent = "Saved successfully!";
       form.reset();
     } else {
       msg.style.color = "red";
-      msg.textContent = json.error;
+      msg.textContent = json.error || "Error saving data";
     }
   } catch (err) {
     msg.style.color = "red";
     msg.textContent = "Error: " + err.message;
   }
 
+  // Re-enable button
   submitBtn.disabled = false;
   submitBtn.textContent = "Save";
 });
+
 
 
 });
@@ -148,6 +151,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
 
