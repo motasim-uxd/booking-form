@@ -1,6 +1,7 @@
 /* main.js -- handles image previews, base64 conversion and submit
    Also registers the service worker if available.
 */
+document.addEventListener("DOMContentLoaded", () => {
 
 const form = document.getElementById("booking-form");
 const msg = document.getElementById("statusMsg");
@@ -49,7 +50,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 
-
+});
 
 
 
@@ -147,6 +148,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
 
