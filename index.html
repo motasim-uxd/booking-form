@@ -1,74 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Booking Form</title>
-  <style>
-    body { font-family: Arial; padding: 20px; max-width: 500px; }
-    label { display: block; margin-top: 10px; }
-    input, textarea { width: 100%; padding: 5px; margin-top: 5px; }
-    button { margin-top: 15px; padding: 10px 20px; }
-    #statusMsg { margin-top: 15px; font-weight: bold; }
-  </style>
-</head>
-<body>
-
 <h1>Booking Form</h1>
-<p>Fill details and attach notes.</p>
-
 <form id="booking-form">
   <label>Name</label>
-  <input type="text" name="name" required>
+  <input type="text" name="name" id="name" required>
 
   <label>Phone</label>
-  <input type="text" name="phone" required>
+  <input type="text" name="phone" id="phone" required>
 
   <label>Email</label>
-  <input type="email" name="email" required>
+  <input type="email" name="email" id="email" required>
 
   <label>Notes</label>
-  <textarea name="notes"></textarea>
+  <textarea name="notes" id="notes"></textarea>
 
-  <button type="submit">Save</button>
+  <button type="submit" id="submitBtn">Save</button>
 </form>
 
 <p id="statusMsg"></p>
 
-<script>
-const form = document.getElementById("booking-form");
-const msg = document.getElementById("statusMsg");
-
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const formData = {
-    name: form.name.value,
-    phone: form.phone.value,
-    email: form.email.value,
-    notes: form.notes.value
-  };
-
-  msg.textContent = "Saving...";
-
-  // Call server-side Apps Script function
-  google.script.run
-    .withSuccessHandler(function(response) {
-      if(response.success){
-        msg.style.color = "green";
-        msg.textContent = "Saved successfully!";
-        form.reset();
-      } else {
-        msg.style.color = "red";
-        msg.textContent = "Error saving data";
-      }
-    })
-    .withFailureHandler(function(error) {
-      msg.style.color = "red";
-      msg.textContent = "Error: " + error.message;
-    })
-    .submitForm(formData);
-});
-</script>
-
-</body>
-</html>
+<script src="main.js" defer></script>
