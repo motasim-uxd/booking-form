@@ -7,7 +7,8 @@ const form = document.getElementById("booking-form");
 const msg = document.getElementById("statusMsg");
 const submitBtn = document.getElementById("submitBtn");
 
-const API_URL = "https://script.google.com/macros/s/YOUR_EXEC_ID/exec";
+// Replace with your Apps Script Web App URL
+const API_URL = "https://script.google.com/macros/s/AKfycbyl0X0kcDrJeiQ0PkMU0TZvb-dMZaDC2GNx8SXwIw4aWjN4Dwyftf1AX-QUy2-RCXPx/exec";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -38,6 +39,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = false;
   submitBtn.textContent = "Save";
 });
+
 
 
 
@@ -139,6 +141,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
 
