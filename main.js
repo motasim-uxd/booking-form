@@ -7,7 +7,6 @@ const form = document.getElementById("booking-form");
 const msg = document.getElementById("statusMsg");
 const submitBtn = document.getElementById("submitBtn");
 
-// Replace with your Apps Script Web App URL
 const API_URL = "https://script.google.com/macros/s/YOUR_EXEC_ID/exec";
 
 form.addEventListener("submit", async (e) => {
@@ -16,7 +15,6 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "Saving...";
 
-  // Prepare form data as application/x-www-form-urlencoded
   const formData = new URLSearchParams();
   formData.append("name", document.getElementById("name").value);
   formData.append("phone", document.getElementById("phone").value);
@@ -24,24 +22,14 @@ form.addEventListener("submit", async (e) => {
   formData.append("notes", document.getElementById("notes").value);
 
   try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      body: formData
-      // Do NOT set Content-Type: browser sets it automatically
-    });
-
+    const res = await fetch(API_URL, { method: "POST", body: formData });
     const json = await res.json();
 
-    if (json.success) {
-      msg.style.color = "green";
-      msg.textContent = "Saved successfully!";
-      form.reset();
-    } else {
-      msg.style.color = "red";
-      // Safely convert error object to string
-      const errorMsg = json.error ? JSON.stringify(json.error) : "Error saving data";
-      msg.textContent = errorMsg;
-    }
+    msg.style.color = json.success ? "green" : "red";
+    msg.textContent = json.message || (json.success ? "Saved!" : "Error saving data");
+
+    if (json.success) form.reset();
+
   } catch (err) {
     msg.style.color = "red";
     msg.textContent = "Error: " + err.message;
@@ -50,6 +38,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = false;
   submitBtn.textContent = "Save";
 });
+
 
 
 });
@@ -150,6 +139,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
 
