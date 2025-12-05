@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Form</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+
+<div class="card">
+  <h1>Booking Form</h1>
+  <p class="muted">Fill details and attach images (camera or gallery). Multiple images allowed.</p>
+
+  <form id="booking-form">
+  <label>Name</label>
+  <input type="text" id="name" name="name">
+
+  <label>Phone</label>
+  <input type="text" id="phone" name="phone">
+
+  <label>Email</label>
+  <input type="email" id="email" name="email">
+
+  <label>Notes</label>
+  <textarea id="notes"></textarea>
+
+  <button id="submitBtn">Save</button>
+</form>
+
+<p id="statusMsg"></p>
+
+<!--
+    <div class="item-row">
+      <div class="col">
+        <strong>Sign Boards</strong>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn-small" onclick="toggleDimensions('signboard')">Add Dimensions</button>
+        <div id="signboard" class="dimensions">
+          <label>Width: 
+            <input type="number" name="signboard_width_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="signboard_width_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+          <label>Height: 
+            <input type="number" name="signboard_height_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="signboard_height_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="col">
+        <strong>Counter</strong>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn-small" onclick="toggleDimensions('desk')">Add Dimensions</button>
+        <div id="desk" class="dimensions">
+          <label>Width: 
+            <input type="number" name="desk_width_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="desk_width_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+          <label>Height: 
+            <input type="number" name="desk_height_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="desk_height_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="col">
+        <strong>Display</strong>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn-small" onclick="toggleDimensions('wallrack')">Add Dimensions</button>
+        <div id="wallrack" class="dimensions">
+          <label>Width: 
+            <input type="number" name="wallrack_width_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="wallrack_width_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+          <label>Height: 
+            <input type="number" name="wallrack_height_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="wallrack_height_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="col">
+        <strong>Vinyl</strong>
+      </div>
+      <div class="col-2">
+      <button type="button" class="btn-small" onclick="toggleDimensions('vinyl')">Add Dimensions</button>
+        <div id="vinyl" class="dimensions">
+          <label>Width: 
+            <input type="number" name="vinyl_width_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="vinyl_width_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+          <label>Height: 
+            <input type="number" name="vinyl_height_feet" placeholder="Feet" min="0"> ft
+            <input type="number" name="vinyl_height_inches" placeholder="Inches" min="0" max="11"> in
+          </label>
+        </div>
+      </div>
+    </div>
+-->
+    <!-- Notes -->
+    
+
+    <!-- Image Upload -->
+    <!--
+    <label style="margin-top:12px">Attach Images
+      <input id="images" type="file" accept="image/*" multiple capture="environment" style="margin-top:6px">
+    </label>
+
+    <div class="image-grid" id="imageGrid"></div>
+  -->
+    
+
+</div>
+
+  <button id="installBtn" 
+    style="display:none; position:fixed; bottom:20px; right:20px; z-index:1000; padding:10px 20px; background:#007bff; color:white; border:none; border-radius:5px; font-size:16px;">
+    Install App
+  </button>
+</div>
+<footer>Booking Form • Add to Home Screen to install</footer>
+
+<script src="main.js"></script>
+<script>
+  // Toggle dimension sections
+  function toggleDimensions(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+  document.querySelectorAll('.dimensions').forEach(el => el.style.display = 'none');
+</script>
+
+</body>
+</html>
