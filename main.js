@@ -32,13 +32,16 @@ form.addEventListener("submit", async (e) => {
     const json = await res.json();
 
     if (json.success) {
-      msg.style.color = "green";
-      msg.textContent = "Saved successfully!";
-      form.reset();
-    } else {
-      msg.style.color = "red";
-      msg.textContent = json.error || "Error saving data";
-    }
+     msg.style.color = "green";
+     msg.textContent = "Saved successfully!";
+     form.reset();
+   } else {
+     msg.style.color = "red";
+     // Convert error object to string
+     const errorMsg = json.error ? JSON.stringify(json.error) : "Error saving data";
+     msg.textContent = errorMsg;
+   }
+
   } catch (err) {
     msg.style.color = "red";
     msg.textContent = "Error: " + err.message;
@@ -149,6 +152,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = 'Save & Generate PDF';
   }
 });*/
+
 
 
 
